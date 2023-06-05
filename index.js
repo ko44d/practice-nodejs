@@ -34,13 +34,13 @@
 //console.log('done');
 
 //const promiseX = (x) => {
-//  return new Promise((resolve, reject) => {
-//      if (typeof x === 'number') {
-//          resolve(x);
-//      } else {
-//          reject(new Error('return error'));
-//      }
-//  })
+//    return new Promise((resolve, reject) => {
+//        if (typeof x === 'number') {
+//            resolve(x);
+//        } else {
+//            reject(new Error('return error'));
+//        }
+//    })
 //};
 //
 //const logAndDouble = (num) => {
@@ -51,7 +51,7 @@
 //promiseX(1)
 //    .then((data) => logAndDouble(data))
 //    .then((data) => logAndDouble(data))
-//    .catch(console.log(data))
+//    .catch((error) => console.log(error));
 
 //const {readFile, writeFile, chmod} = require(`fs`);
 //
@@ -163,3 +163,95 @@
 //main()
 //    .then((data) => console.log(data))
 //    .catch((err)=>console.error(err))
+
+//const EventEmitter = require('events');
+//class MyEmitter extends EventEmitter{}
+//
+//const myEmitter = new MyEmitter();
+//
+//myEmitter.on('myevent', (data) => {
+//    console.log('on myevent:', data);
+//});
+//
+//myEmitter.emit('myevent','one');
+//
+//setTimeout(() => {
+//    myEmitter.emit('myevent', 'two');
+//},1000);
+
+//const http = require('http');
+//
+//const server = http.createServer();
+//
+//server.on('request', (req, res) => {
+//    res.write('hello world\n');
+//    res.end();
+//
+//});
+//
+//server.on('error', (err) => {
+//    console.log(err);
+//})
+//
+//server.listen(3000);
+
+//const fs = require('fs');
+//
+//const { writeFile } = require('fs/promises');
+//
+//const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+//
+//const readStream = fs.createReadStream(__filename, { encoding: 'utf8',highWaterMark: 64 });
+//
+//const writeFileName = `${__filename}-${Date.now()}`
+//const write = async (chunk) => {
+//    await sleep(Math.random() * 1000);
+//    await writeFile(writeFileName, chunk, {flag: 'a'});
+//}
+//
+//let counter = 0;
+//readStream.on('data', async (chunk) => {
+//    console.log(counter);
+//    counter++;
+//
+//    await write(chunk);
+//})
+//
+//readStream.on('close', () => {
+//    console.log('close');
+//})
+//
+//readStream.on('error', (e) => {
+//    console.log('error:', e);
+//})
+
+//const fs = require('fs');
+//
+//const { writeFile } = require('fs/promises');
+//const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+//
+//const writeFileName = `${__filename}-${Date.now()}`
+//const write = async (chunk) => {
+//    await sleep(Math.random() * 1000);
+//    await writeFile(writeFileName, chunk, {flag: 'a'});
+//}
+//const main = async(chunk) => {
+//    const stream = fs.createReadStream(__filename, { encoding: 'utf8', highWaterMark: 64});
+//
+//    let counter = 0;
+//
+//    for await(const chunk of stream) {
+//        console.log(counter);
+//        counter++;
+//        await write(chunk);
+//    }
+//}
+//
+//main().catch((e) => console.error(e));
+
+//const main = async () => {
+//    JSON.parse('error str');
+//}
+//
+//main().catch((e) => console.log(e));
+
