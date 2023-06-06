@@ -11,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "marked": "^5.0.4",
+    "marked-gfm-heading-id": "^3.0.4",
+    "marked-mangle": "^1.0.1",
     "yargs": "^17.7.2"
   }
 }
