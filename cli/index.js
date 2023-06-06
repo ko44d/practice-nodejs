@@ -1,6 +1,6 @@
 const path = require("path");
-const yargs = require('yargs/yargs');
-const {hideBin} = require('yargs/helpers');
+const yargs = require("yargs/yargs");
+const {hideBin} = require("yargs/helpers");
 const {getPackageName} = require("./lib/name");
 const {readMarkdownFileSync, writeHtmlFileSync} = require("./lib/file");
 const {marked} = require("marked");
@@ -11,9 +11,9 @@ marked.setOptions({
 })
 
 const { argv } = yargs(hideBin(process.argv))
-    .option('name', {describe: 'diplay CLI name.'})
-    .option('file', {describe: 'path to Markdown file.'})
-    .option('output', {describe: 'output html file', default: 'article.html'});
+    .option("name", {describe: "diplay CLI name."})
+    .option("file", {describe: "path to Markdown file."})
+    .option("output", {describe: "output html file", default: "article.html"});
 
 if (argv.name) {
     const name = getPackageName();
